@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+.turbo/
+
+# Testing
+coverage/
+
+# Environment
+.env
+.env.*
+
+# OS / Editor
+.DS_Store
+*.log
+/.idea/
+/.vscode/

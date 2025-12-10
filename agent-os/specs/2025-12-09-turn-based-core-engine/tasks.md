@@ -11,7 +11,7 @@ Total Tasks: 13
 **Dependencies:** None
 
 - [ ] 1.0 Define core types/interfaces (`GameState`, `Player`, `Portfolio`, `BoardSquare`, `PriceLadder`, `TurnResult`, `Action`)
-- [ ] 1.1 Encode 1963 board squares with typed identifiers and effect metadata (dividends, splits, pay/collect, sell-all, stockholder meetings, start squares)
+- [ ] 1.1 Encode 1963 board squares with typed identifiers and effect metadata (dividends, splits, pay/collect, sell-all, stockholder meetings, start squares); treat “stockholders enter” fork entry squares as pass-through for MVP
 - [ ] 1.2 Encode 1963 price ladder per stock with clamping helpers
 - [ ] 1.3 Set up deterministic RNG interface (injectable) for dice rolls
 - [ ] 1.4 Tests: 2-6 focused tests validating board data integrity and ladder helpers
