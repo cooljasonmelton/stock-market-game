@@ -20,7 +20,7 @@ Turn-based core engine — Pure TypeScript rules for players, dice, board moveme
 **Answer:** Yes, use those price steps per stock.
 
 **Q5:** What’s the win condition you want encoded: first to a target net worth, highest net worth after a set number of laps/turns, or follow the original rulebook if different?  
-**Answer:** First to $100,000; players must liquidate holdings to reach $100,000 in cash.
+**Answer:** First to $100,000; players must liquidate holdings to reach $100,000 in cash (strictly > $99,999 is sufficient).
 
 **Q6:** Any rules or square effects you want excluded or simplified in the core engine (e.g., skipping certain penalties/bonuses), or should everything on the 1963 board be implemented as-is?  
 **Answer:** Implement everything on the board; not too complicated.
@@ -45,9 +45,9 @@ No visual assets provided. (Checked `agent-os/specs/2025-12-09-turn-based-core-e
 - Turn engine in pure TypeScript: player turn order, dice roll (2d6), clockwise movement, square effect resolution, and validation of actions.
 - Start flow: skip pre-game job mechanic; players choose one of four center start squares and begin with $1,000 cash, no holdings.
 - Turn loop: optional sell before movement → move → apply landed square effects → if square permits, optional buy.
-- Board fidelity: implement all 1963 board squares (dividends, splits, penalties, bonuses, stockholder meetings, etc.) as-is.
+- Board fidelity: implement 1963 board squares (dividends, splits, penalties, bonuses, stockholder meetings, etc.) for the main loop; defer optional “stockholders enter” forked multiplier paths for now.
 - Price ladder: encode the provided 1963 ladder per stock, with clamping at bounds; square effects adjust prices using this ladder.
-- Win condition: first player to reach $100,000 cash after liquidating holdings (must sell to achieve cash threshold).
+- Win condition: first player to reach >$99,999 cash after liquidating holdings (must sell to achieve cash threshold).
 
 ### Reusability Opportunities
 - None identified yet; engine to be modular for reuse by UI and future multiplayer.
@@ -59,6 +59,7 @@ No visual assets provided. (Checked `agent-os/specs/2025-12-09-turn-based-core-e
 
 **Out of Scope:**
 - Pre-game “job” mechanic to reach $1,000 (deferred).
+- Optional “stockholders enter” forked paths that multiply holdings (deferred).
 - Online/multiplayer sync; any non-board-rule variants.
 - UI specifics beyond what the engine exposes.
 

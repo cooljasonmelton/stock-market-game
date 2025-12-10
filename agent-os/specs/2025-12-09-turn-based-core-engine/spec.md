@@ -22,7 +22,8 @@ Deliver a pure TypeScript turn engine that mirrors the 1963 Stock Market board: 
 - Expose turn result events (dice, movement, effects, transactions) for UI log.
 
 **Board Model**
-- Encode all 1963 board squares with typed identifiers and rule definitions (dividends, splits, penalties, bonuses, stockholder meetings, pay/collect, “sell all”, etc.).
+- Encode 1963 board squares for the main loop with typed identifiers and rule definitions (dividends, splits, penalties, bonuses, stockholder meetings, pay/collect, “sell all”, etc.).
+- Defer the optional “stockholders enter” forked multiplier paths; treat those entry squares as standard pass-through for now.
 - Support four start squares and clockwise traversal; handle passing/landing behaviors per square definitions.
 - Keep board data UI-agnostic for reuse across platforms.
 
@@ -42,7 +43,7 @@ Deliver a pure TypeScript turn engine that mirrors the 1963 Stock Market board: 
 - Support sequences when a square triggers multiple effects (e.g., price move plus dividend).
 
 **Win Condition**
-- Detect win when a player reaches $100,000 cash after liquidating holdings; require selling holdings to cross the threshold.
+- Detect win when a player has >$99,999 cash after liquidating holdings; require selling holdings to cross the threshold.
 - Expose win event and lock further actions once a winner is set.
 
 **State & Purity**
@@ -65,3 +66,4 @@ No existing reusable code identified in this repo; engine to be built fresh but 
 - Any UI implementation; this spec covers engine only.
 - Online/multiplayer sync and networking.
 - Alternative rule variants beyond the 1963 board and provided price ladder.
+- Optional “stockholders enter” forked multiplier paths (deferred).
