@@ -1,4 +1,4 @@
-# Specification: Turn-based core engine (scoped reset)
+# Specification: Tooling & Rescope (scoped reset)
 
 ## Goal
 Establish tooling and prep for smaller, vertical specs (logic + minimal UI) instead of one large engine build.
