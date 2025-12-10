@@ -1,69 +1,34 @@
-# Specification: Turn-based core engine
+# Specification: Turn-based core engine (scoped reset)
 
 ## Goal
-Deliver a pure TypeScript turn engine that mirrors the 1963 Stock Market board: deterministic turn flow, board movement, square effects, price ladder adjustments, and win detection, ready for hot-seat play and future UI/multiplayer.
+Establish tooling and prep for smaller, vertical specs (logic + minimal UI) instead of one large engine build.
 
 ## User Stories
-- As a host running game night, I want automated turns and board effects so play is fast and dispute-free.
-- As a player, I want to buy/sell at the right times with accurate prices so I can focus on strategy.
-- As a group, we want a clear win condition so the game ends decisively when someone reaches $100,000.
+- As a developer, I want a working TypeScript/Vitest toolchain so future specs can ship quickly.
+- As the team, I want the engine work split into small slices so we can iterate on logic and UI together.
 
 ## Specific Requirements
 
-**Setup & Start**
-- Skip pre-game “job” mechanic; each player starts with $1,000 cash, no holdings.
-- Players choose one of four center start squares (one per side) before first roll.
-- Use two six-sided dice; move clockwise.
-- Represent setup choices/config as part of state to allow adding the job phase later.
+**Tooling Setup**
+- Keep TypeScript (strict), Vite-friendly module settings, and Vitest config in place.
+- Maintain npm scripts for `test`, `test:watch`, and `typecheck`.
+- Include `package-lock.json` in version control for deterministic installs.
 
-**Turn Flow**
-- Sequence: optional sell → roll/move → apply landed square effect(s) → if square permits, optional buy → end turn.
-- Enforce valid actions per phase; reject buys before movement and buys on non-permitted squares.
-- Expose turn result events (dice, movement, effects, transactions) for UI log.
+**Backlog Rescope**
+- Use `docs/backlog.md` to drive smaller specs: dice/movement loop → square mechanics → price tracker → win condition → persistence.
+- Pair each slice with minimal UI wiring and focused tests.
 
-**Board Model**
-- Encode 1963 board squares for the main loop with typed identifiers and rule definitions (dividends, splits, penalties, bonuses, stockholder meetings, pay/collect, “sell all”, etc.).
-- Defer the optional “stockholders enter” forked multiplier paths; treat those entry squares as standard pass-through for now.
-- Support four start squares and clockwise traversal; handle passing/landing behaviors per square definitions.
-- Keep board data UI-agnostic for reuse across platforms.
-
-**Price Ladder**
-- Encode the provided 1963 ladder per stock as canonical data; clamp at bounds.
-- Provide helpers for price up/down steps, dividends, splits, and price lookups by stock/tier.
-- Ensure ladder adjustments are deterministic and validated (no negative/overflow values).
-
-**Trade & Cash Validation**
-- Validate sells against holdings; validate buys against available cash and square permissions.
-- Update cash/holdings atomically with price lookups from the ladder; include transaction summaries in turn results.
-- Allow “sell all” enforcement when triggered by board squares.
-
-**Square Effects Execution**
-- Apply square rules deterministically (dividends, splits, pay/collect amounts, go-to/skip effects if present).
-- Emit normalized effect results for UI (type, stock, delta cash, delta holdings, price moves).
-- Support sequences when a square triggers multiple effects (e.g., price move plus dividend).
-
-**Win Condition**
-- Detect win when a player has >$99,999 cash after liquidating holdings; require selling holdings to cross the threshold.
-- Expose win event and lock further actions once a winner is set.
-
-**State & Purity**
-- Core engine exposed as pure functions over immutable state (state + action → new state + events).
-- Include schema/types for `GameState`, `Player`, `Portfolio`, `BoardSquare`, `PriceLadder`, `TurnResult`.
-- Provide deterministic random support (injectable RNG) to ease testing.
-
-**Config & Extensibility**
-- Gate the job mechanic as a future flag; default off in MVP.
-- Structure rules/data so online multiplayer can share the same engine without React/Zustand coupling.
+**Cleanup & Deferral**
+- Engine implementation, board data, and price ladder are deferred to new, narrower specs.
+- Placeholder files are acceptable to satisfy tooling until new specs add real code.
 
 ## Visual Design
 No visual assets provided.
 
 ## Existing Code to Leverage
-No existing reusable code identified in this repo; engine to be built fresh but structured for reuse by future UI and multiplayer layers.
+None yet; future specs will introduce reusable logic/components.
 
 ## Out of Scope
-- Pre-game “job” mechanic to reach $1,000 starting cash (deferred flag).
-- Any UI implementation; this spec covers engine only.
-- Online/multiplayer sync and networking.
-- Alternative rule variants beyond the 1963 board and provided price ladder.
-- Optional “stockholders enter” forked multiplier paths (deferred).
+- Any engine/board/price logic implementation in this spec.
+- UI beyond minimal placeholders introduced by future slices.
+- Online/multiplayer sync and optional forked board paths.
