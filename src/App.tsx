@@ -1,6 +1,11 @@
 import React, { useMemo, useState } from "react";
 import { Board } from "./components/Board";
-import { applyChooseStart, createGame, rollAndMove, START_SQUARES } from "./game/logic";
+import {
+  applyChooseStart,
+  createGame,
+  rollAndMove,
+  START_SQUARES,
+} from "./game/logic";
 import { createSeededRng } from "./game/rng";
 import { Direction, GameState } from "./game/types";
 
@@ -23,11 +28,13 @@ export function App() {
 
   const startGame = () => {
     const parsedSeed = seedInput.trim() === "" ? undefined : Number(seedInput);
-    const rngInstance = createSeededRng(Number.isNaN(parsedSeed) ? undefined : parsedSeed);
+    const rngInstance = createSeededRng(
+      Number.isNaN(parsedSeed) ? undefined : parsedSeed
+    );
     const { state } = createGame({
       playerCount,
       seed: rngInstance.seed,
-      direction
+      direction,
     });
     setGameState(state);
     setRng(rngInstance);
@@ -51,8 +58,11 @@ export function App() {
     const { state: nextState, log } = rollAndMove(gameState, rng);
     setGameState(nextState);
     setLogs((prev) => [
-      { player: player.name, text: `rolled ${log.dice[0]} + ${log.dice[1]} → ${log.to}` },
-      ...prev
+      {
+        player: player.name,
+        text: `rolled ${log.dice[0]} + ${log.dice[1]} → ${log.to}`,
+      },
+      ...prev,
     ]);
   };
 
@@ -64,7 +74,11 @@ export function App() {
         <div>Choose start for {currentPlayer.name}:</div>
         <div className="start-buttons">
           {START_SQUARES.map((s) => (
-            <button key={s} onClick={() => chooseStart(s)} data-testid={`start-${s}`}>
+            <button
+              key={s}
+              onClick={() => chooseStart(s)}
+              data-testid={`start-${s}`}
+            >
               {s}
             </button>
           ))}
@@ -99,7 +113,10 @@ export function App() {
         </label>
         <label>
           Direction:
-          <select value={direction} onChange={(e) => setDirection(e.target.value as Direction)}>
+          <select
+            value={direction}
+            onChange={(e) => setDirection(e.target.value as Direction)}
+          >
             <option value="clockwise">Clockwise</option>
             <option value="counterclockwise">Counterclockwise</option>
           </select>
@@ -109,19 +126,32 @@ export function App() {
         </button>
       </section>
 
+      {renderStartChoice()}
+
       {gameState && currentPlayer && (
         <section className="status">
           <div>Current player: {currentPlayer.name}</div>
           <div>Turn: {gameState.turnNumber}</div>
-          <button onClick={roll} disabled={!currentPlayer.hasChosenStart} data-testid="roll">
+          <button
+            onClick={roll}
+            disabled={!currentPlayer.hasChosenStart}
+            data-testid="roll"
+          >
             Roll
           </button>
         </section>
       )}
 
-      {gameState && <Board state={gameState} />}
-
-      {renderStartChoice()}
+      {gameState && (
+        <div className="board-container" style={{ maxHeight: "70vh" }}>
+          <Board
+            state={gameState}
+            currentPlayerId={
+              gameState.players[gameState.currentPlayerIndex]?.id
+            }
+          />
+        </div>
+      )}
 
       <section className="log">
         <h3>Log</h3>
