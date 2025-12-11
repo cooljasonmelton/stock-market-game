@@ -1,99 +1,72 @@
-* {
-  box-sizing: border-box;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
 }
 
 body {
-  margin: 0;
+  @apply bg-slate-50 text-slate-900 m-0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: #f7f7f9;
-  color: #1f2933;
 }
 
 .app {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 24px;
+  @apply max-w-6xl mx-auto p-4 sm:p-6;
 }
 
 .controls,
 .status {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  align-items: center;
-  margin-bottom: 16px;
+  @apply flex flex-wrap items-center gap-3 mb-4;
 }
 
 label {
-  display: flex;
-  flex-direction: column;
-  font-size: 14px;
+  @apply flex flex-col text-sm;
 }
 
 input,
 select,
 button {
-  padding: 6px 8px;
-  font-size: 14px;
+  @apply px-2 py-1 text-sm border border-slate-200 rounded;
+}
+
+button {
+  @apply bg-slate-800 text-white hover:bg-slate-700 transition;
 }
 
 .board-grid {
-  display: grid;
-  grid-template-columns: repeat(12, minmax(48px, 1fr));
-  gap: 6px;
-  margin: 16px 0;
+  @apply grid gap-1 sm:gap-2;
+  grid-template-columns: repeat(12, minmax(20px, 1fr));
 }
 
 .tile {
-  background: white;
-  border: 1px solid #e5e7eb;
-  border-radius: 6px;
-  padding: 6px;
-  min-height: 56px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  @apply bg-white border border-slate-200 rounded p-2 min-h-[48px] flex flex-col justify-between;
 }
 
 .tile-label {
-  font-size: 12px;
-  color: #6b7280;
+  @apply text-[11px] text-slate-600;
 }
 
 .markers {
-  display: flex;
-  gap: 4px;
-  flex-wrap: wrap;
+  @apply flex gap-1 flex-wrap;
 }
 
 .marker {
-  background: #2563eb;
-  color: white;
-  border-radius: 50%;
-  width: 18px;
-  height: 18px;
-  display: grid;
-  place-items: center;
-  font-size: 12px;
+  @apply text-white rounded-full w-5 h-5 grid place-items-center text-[11px] font-semibold;
 }
 
 .log ul {
-  list-style: none;
-  padding-left: 0;
+  @apply list-none pl-0;
 }
 
 .log li {
-  padding: 4px 0;
-  border-bottom: 1px solid #e5e7eb;
-  font-size: 14px;
+  @apply py-1 border-b border-slate-200 text-sm;
 }
 
 .start-choice {
-  margin: 16px 0;
+  @apply my-4;
 }
 
 .start-buttons {
-  display: flex;
-  gap: 8px;
-  margin-top: 8px;
+  @apply flex gap-2 mt-2;
 }
