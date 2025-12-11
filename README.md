@@ -1,4 +1,4 @@
-# Stock Market 1963 Digital
+# Stock Market Game 
 
 Modern adaptation of the 1963 Whitman Stock Market Game. Players roll dice, move around the original board, and buy/sell stocks with automated rules enforcement, turn tracking, and save/resume.
 
