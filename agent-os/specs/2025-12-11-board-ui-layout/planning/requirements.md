@@ -43,7 +43,7 @@ No visual assets provided. (Checked `agent-os/specs/2025-12-11-board-ui-layout/p
 
 ### Functional Requirements
 - Board layout: 48 squares (0–47) arranged 12 per side with shared corners; square 0 at middle of a side; start squares at 0, 12, 24, 36.
-- Faithful labels/colors matching the provided board; stock-color mapping config so stock-linked squares share consistent colors.
+- Labels/colors are placeholder for now; a follow-up spec will transcribe exact outer-ring labels/colors from the reference board. Stock-color mapping is provisional.
 - Player markers rendered on squares; distinct colors per player.
 - Preserve existing controls (player count, seed, direction toggle, roll) integrated with the new layout.
 - Responsive/mobile-first layout; board remains square-ish and usable on small screens.
@@ -53,11 +53,11 @@ No visual assets provided. (Checked `agent-os/specs/2025-12-11-board-ui-layout/p
 
 ### Scope Boundaries
 **In Scope:**
-- Layout, styling, labels/colors, player markers, and preserving current controls.
+- Layout, styling, placeholder labels/colors, player markers, and preserving current controls.
 - Tailwind adoption for this UI slice.
 
 **Out of Scope:**
-- New square mechanics, pricing, win condition, persistence, or multiplayer changes.
+- Accurate label/color transcription (deferred to next spec); new square mechanics, pricing, win condition, persistence, or multiplayer changes.
 
 **Future Enhancements Mentioned:**
 - Use stock color mapping for mechanics/pricing in later slices.

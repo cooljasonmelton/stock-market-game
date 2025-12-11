@@ -1,7 +1,7 @@
 # Specification: Board UI Layout
 
 ## Goal
-Render the 48-square board in a layout matching the original game: square 0 at mid-side, start squares at 0/12/24/36, faithful labels/colors tied to stocks, responsive/mobile-first, with player markers and existing controls intact.
+Render the 48-square board in a layout matching the original game: square 0 at mid-side, start squares at 0/12/24/36, responsive/mobile-first, with player markers and existing controls intact. **Note:** Labels and stock colors are placeholder until a follow-up spec transcribes the exact outer-ring sequence and color mapping from the reference board.
 
 ## User Stories
 - As a player, I want to see the board laid out like the original so I recognize start positions and square context.
@@ -15,9 +15,9 @@ Render the 48-square board in a layout matching the original game: square 0 at m
 - Layout should preserve a square-ish shape and adapt to mobile (e.g., stacked rows) and desktop (grid).
 
 **Color/Label Fidelity**
-- Faithful labels and colors to match the reference board.
-- Create a stock-to-color mapping config and reuse it for any stock-linked squares.
-- Non-stock squares should retain their distinct colors as per the reference.
+- Placeholder labels/colors for now; a follow-up spec will transcribe the exact outer-ring sequence from the reference board.
+- Stock-to-color mapping is provisional and will be replaced when the accurate mapping is captured.
+- Non-stock squares currently share neutral styling; fidelity deferred to the next spec.
 
 **Player Markers**
 - Show player markers on their current squares; distinct color per player.

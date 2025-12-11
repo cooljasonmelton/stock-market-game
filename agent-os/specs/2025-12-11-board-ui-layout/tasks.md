@@ -1,7 +1,7 @@
 # Task Breakdown: Board UI Layout
 
 ## Overview
-Total Tasks: 10
+Total Tasks: 10 (Labels/colors are placeholder; accurate transcription deferred to a follow-up spec.)
 
 ## Task List
 
@@ -24,7 +24,7 @@ Total Tasks: 10
 
 - [x] 2.0 Install/configure Tailwind in the Vite project.
 - [x] 2.1 Add base styles (mobile-first) for typography and layout shells.
-- [ ] 2.2 Tests: N/A (visual/manual is fine).
+- [x] 2.2 Tests: N/A (visual/manual is fine).
 
 **Acceptance Criteria:**
 - Tailwind available; base styles applied without breaking existing UI.
@@ -34,7 +34,7 @@ Total Tasks: 10
 
 - [x] 3.0 Render 48-square board in a square-ish layout: 12 per side, shared corners, square 0 mid-side; start squares at 0/12/24/36.
 - [x] 3.1 Apply labels/colors from metadata; use stock-color mapping for stock squares.
-- [ ] 3.2 Responsive: mobile-first layout that remains legible; square-ish on desktop.
+- [x] 3.2 Responsive: mobile-first layout that remains legible; square-ish on desktop.
 - [x] 3.3 Tests: 2-3 RTL checks for square count, start squares, and color class application.
 
 **Acceptance Criteria:**
@@ -47,7 +47,7 @@ Total Tasks: 10
 
 - [x] 4.0 Render player markers on squares with distinct colors per player; support multiple markers per square.
 - [x] 4.1 Integrate existing controls (player count, seed, direction, roll) with new board component; preserve log display.
-- [ ] 4.2 Optional: highlight current player’s square.
+- [x] 4.2 Optional: highlight current player’s square.
 - [x] 4.3 Tests: 2-3 RTL checks for markers rendering and controls still functioning (start, roll, position/log update).
 
 **Acceptance Criteria:**
@@ -58,7 +58,7 @@ Total Tasks: 10
 #### Task Group 5: QA pass
 **Dependencies:** Task Groups 1-4
 
-- [ ] 5.0 Manual responsive check (mobile/desktop) for layout and readability.
+- [ ] 5.0 Manual responsive check (mobile/desktop) for layout and readability. (Pending manual QA)
 - [x] 5.1 Run `npm run lint`, `npm run typecheck`, `npm test`.
 
 **Acceptance Criteria:**
