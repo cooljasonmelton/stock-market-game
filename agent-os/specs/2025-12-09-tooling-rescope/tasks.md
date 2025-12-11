@@ -1,4 +1,4 @@
-# Task Breakdown: Turn-based core engine (scoped reset)
+# Task Breakdown: Tooling & Rescope (scoped reset)
 
 ## Overview
 Total Tasks: 6
